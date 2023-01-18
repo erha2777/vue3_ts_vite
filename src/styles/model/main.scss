@@ -1,0 +1,61 @@
+#main {
+    display: flex;
+    overflow-y: auto;
+    height: calc(100vh - 80px - 80px);
+
+    #aside{
+        position: fixed;
+        width: 200px;
+        overflow-y: auto;
+        padding: 10px;
+        box-sizing: border-box;
+        border-right: 1px solid;
+        height: calc(100vh - 80px - 80px);
+        ul>li{
+            padding: 10px 5px;
+            margin: 5px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover{
+                background-color: rgba($color: #ccc, $alpha: .2);
+            }
+        }
+        &>div{
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+            &:hover{
+                background-color: rgba($color: #ccc, $alpha: .2);
+            }
+        }
+        .myCreate,
+        .myCollection{
+            color: #ccc;
+            font-size: 16px;
+            margin: 10px 0;
+            .iconfont{
+                font-size: 12px;
+            }
+        }
+        .active {
+            background-color: rgba($color: #ccc, $alpha: .2);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: transparent;
+        }
+        &:hover{
+            &::-webkit-scrollbar-thumb {
+                background-color: #e0e0e0;
+            }
+        }
+    }
+    .container{
+        width: calc(100% - 200px);
+        margin-left: 200px;
+    }
+}

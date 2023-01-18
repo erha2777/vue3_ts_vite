@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+ul,li{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+// text-align
+.tac{
+  text-align: center !important;
+}
+
+// 禁止选中
+body{
+  /* 火狐 */
+  -moz-user-select: none;
+  /* Safari 和 欧朋 */
+  -webkit-user-select: none;
+  /* IE10+ and Edge */
+  -ms-user-select: none;
+  /* Standard syntax 标准语法(谷歌) */
+  user-select: none;
+}
+
+// margin 
+.ml5{
+  margin-left: 5px;
+}
+.mr5{
+  margin-right: 5px;
+}
+
+// flex
+.flex{
+    display: flex !important;
+    &_sb{
+      @extend .flex;
+      justify-content: space-between;
+      &_c{
+        @extend .flex_sb;
+        align-items: center
+      }
+    }
+    &_c{
+      @extend .flex;
+      justify-content: center;
+      &_c{
+        @extend .flex_c;
+        align-items: center
+      }
+    }
+    &_start{
+      @extend .flex;
+      justify-content: flex-start;
+      &_c{
+        @extend .flex_start;
+        align-items: center
+      }
+    }
+    &_end{
+      @extend .flex;
+      justify-content: flex-end;
+      &_c{
+        @extend .flex_end;
+        align-items: center
+      }
+    }
+    &_ac{
+      @extend .flex;
+      align-items: center;
+    }
+  
+    &_column{
+      @extend .flex;
+      flex-direction: column;
+      &_sb{
+        @extend .flex_column;
+        justify-content: space-between;
+      }
+      &_c{
+        @extend .flex_column;
+        justify-content: center;
+      }
+      &_start{
+        @extend .flex_column;
+        justify-content: flex-start;
+      }
+      &_end{
+        @extend .flex_column;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  /* 滚动条样式 */
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  /* border-radius: 10px; */
+  width: 8px;
+  height: 0px;
+  /* background-color: rgba(255,255,255,.5); */
+  background-color: transparent;
+}
+
+::-webkit-scrollbar:hover{
+  /* width: ; */
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  /* border-radius: 10px; */
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+  /* background-color: rgba(255,255,255,.5); */
+  background-color: transparent;
+}
+::-webkit-scrollbar-track:hover{
+  /* background-color: #f5f5f5; */
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px; 
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .3);
+    // background-color: rgba(135,205,235,0.5);
+    background-color: #e0e0e0;
+  }
+::-webkit-scrollbar-thumb:hover{
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  background-color: #d4d4d4;
+
+}

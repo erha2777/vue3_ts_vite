@@ -1,0 +1,71 @@
+.songList{
+    .title{
+      height: 40px;
+      cursor:auto;
+    }
+    .select {
+      .name{
+        color: red;
+      }
+      .index {
+        .iconfont{
+          color: red;
+        }
+      }
+    }
+    .active {
+      background-color: rgba($color: #ccc, $alpha: .6) !important;
+    }
+    li {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &:nth-child(2n){
+        // background-color: #fafafa;
+        background-color: rgba($color: #ccc, $alpha: .1);
+      }
+      &:not(.title):hover{
+        // background-color: #f2f2f3;
+        background-color: rgba($color: #ccc, $alpha: .4);
+      }
+      .operation{
+        display: flex;
+        align-items: center;
+        color: #c8c8d8;
+        font-size: 12px;
+        .index{
+          margin-left: 20px;
+          margin-right: 10px;
+        }
+        .like{
+          margin-right: 10px;
+        }
+        .iconfont{
+          cursor:pointer;
+        }
+      }
+      &>span {
+        display: block;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &:nth-child(1){
+          width: 10%;
+        }
+        &:nth-child(2){
+          width: 40%;
+        }
+        &:nth-child(3){
+          width: 20%;
+        }
+        &:nth-child(4){
+          width: 20%;
+        }
+        &:nth-child(5){
+          width: 10%;
+        }
+      }
+    }
+  }

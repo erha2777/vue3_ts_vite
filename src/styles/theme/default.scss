@@ -1,0 +1,22 @@
+$theme-name:'default';
+$theme-color-1:#ec4141;
+$theme-color-2:#fff;
+$theme-color-3:#333;
+$theme-header-color:$theme-color-1;
+$theme-footer-color:$theme-color-2;
+$theme-right-list-color:$theme-color-2;
+
+$theme-drop-down-color:$theme-color-2;
+$theme-button-color:$theme-color-2;
+
+$theme-background-color:$theme-color-2;
+$theme-text-color:$theme-color-3;
+$theme-main-color:$theme-color-1;
+
+
+$theme-comment-username-color:#507daf;
+$theme-comment-username-hover-color:#0b58b0;
+
+$theme-border-color:#e0e0e0;
+
+@import './theme.scss'; 

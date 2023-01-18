@@ -1,0 +1,179 @@
+#header{
+    display: flex;
+    align-items: center;
+    height: 80px;
+    .iconfont{
+        font-size: 20px;
+        margin:0 5px;
+        cursor: pointer;
+        &:hover{
+            color: white;
+        }
+    }
+    .header-right{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: rgba($color:white, $alpha: .8);  
+    }
+    
+    .logo{
+        width: 200px;
+        text-align: center;
+        color: white;
+        font-size: 24px;
+    }
+    .router{
+        margin-right: 10px;
+        
+        .not{
+            opacity: .5;
+        }
+    }
+    .searchBox {
+        #searchInput {
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            height: 25px;
+            padding-left: 10px;
+        }
+    }
+    // 用户信息
+    .userInfo {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        cursor: pointer;
+        .avatar{
+            width: 40px;
+            height: 40px;
+            margin-right: 5px;
+            border-radius: 50%;
+        }
+    }
+    .userInfo-box{
+        &:hover{
+            color: rgba($color:white, $alpha: 1);  
+        }
+    }
+    .userInfo-drop-down{
+        position: absolute;
+        top: calc(100% + 20px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 280px;
+        box-shadow: 0px 0px 0px 1px rgba($color: #ccc, $alpha: .6);
+        padding: 20px 20px 5px;
+        border-radius: 5px;
+        z-index: 9;
+        .drop-down-top{
+            border-bottom: 1px solid rgba($color: #ccc, $alpha: .6);
+            text-align: center;
+            ul{
+                display: flex;
+                justify-content: space-between;
+            }
+            li{
+                display: flex;
+                flex-direction: column;
+                color: rgba($color: #ccc, $alpha: .9);
+                text-align: center;
+                font-size: 14px;
+                span{
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+            }
+            button{
+                padding: 5px 20px;
+                margin: 18px 0 10px;
+                border-radius: 15px;
+                border: 1px solid rgba($color: #ccc, $alpha: .6);
+                font-size: 14px;
+                cursor: pointer;
+            }
+            .isFlag{
+                color: #ccc;
+            }
+        }
+        &>ul{
+            li{
+                display: flex;
+                align-items: center;
+                line-height: 30px;
+                
+            }
+        }
+    }
+
+    // 主题
+    .theme{
+        position: relative;
+    }
+    .theme-drop-down{
+        position: absolute;
+        top: calc(100% + 30px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        box-shadow: 0px 0px 0px 1px rgba($color: #ccc, $alpha: .6);
+        padding: 20px 20px;
+        border-radius: 5px;
+        z-index: 9;
+        .model-change{
+            display: flex;
+            margin-bottom: 10px;
+            li{
+                padding-bottom: 5px;
+                position: relative;
+                color: #666;
+                margin-right: 20px;
+            }
+            .select {
+                color: #333333;
+                font-weight: 700;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 10%;
+                    width: 80%;
+                    height: 2px;
+                    border-radius: 1px;
+                    background-color: red;
+                }
+            }
+        }
+        // .select-box{}
+        .theme-list{
+            display: flex;
+            color: #333;
+            li{
+                position: relative;
+                width: 80px;
+                height:80px;
+                line-height: 80px;
+                text-align: center;
+                border-radius: 10px;
+                margin-right: 9px;
+                color: #fff;
+                cursor: pointer;
+                .icon-choosehandle{
+                    line-height: 20px;
+                    margin: 0;
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+    .operation{
+        border-left: 1px solid #fff;
+        margin-left: 10px;
+        padding: 0 5px;
+    }
+}

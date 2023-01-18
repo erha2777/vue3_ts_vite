@@ -1,0 +1,85 @@
+//引用dark.scss和light.scss两个文件变量
+body.theme-#{$theme-name}{
+    #header{
+        background-color: $theme-header-color;
+        border-bottom:1px solid $theme-main-color;
+    }
+    #rightClickMenu{
+        background-color: $theme-color-2;
+        .songSheet{
+            ul{
+                background-color: $theme-color-2;
+            }
+        }
+    }
+    #searchSuggest{
+        background-color: $theme-color-2;
+        color: $theme-text-color;
+        box-shadow: 0px 0px 5px 1px rgba($color: $theme-color-3, $alpha: .2);
+    }
+    #aside{
+        border-right: 1px solid  $theme-border-color;
+    }
+    #footer{
+        background-color: $theme-footer-color;
+        .footer-right{
+            span{
+                &:hover{
+                    color: $theme-main-color;
+                }
+            }
+            .volumeValue{
+                background-color: $theme-main-color;
+                .dot{
+                    background-color: $theme-main-color;
+                }
+            }
+        }
+    }
+    #songList-right{
+        background-color: $theme-right-list-color;
+    }
+    #audio .controller .iconfont{
+        &:hover{
+            color: $theme-main-color;
+        }
+    }
+
+    .userInfo-drop-down{
+        background-color: $theme-drop-down-color;
+        button{
+            background-color: $theme-button-color;
+            color: $theme-text-color;
+        }
+    }
+    .theme-drop-down{
+        background-color: $theme-drop-down-color;
+    }
+    .playListMsg .title span{
+        border-color: $theme-main-color !important;
+        color: $theme-main-color;
+    }
+
+
+    // 公共样式
+    background-color: $theme-background-color;
+    color: $theme-text-color;
+    .text-color{
+        color: $theme-text-color !important;
+    }
+    .theme-text-color{
+        color: $theme-main-color !important;
+    }
+    .theme-bg-color{
+        background-color: $theme-main-color !important;
+    }
+    .theme-border-color{
+        border-color: $theme-border-color !important;
+    }
+    .theme-comment-username-color{
+        color: $theme-comment-username-color;
+        &:hover{
+            color: $theme-comment-username-hover-color;
+        }
+    }
+}
