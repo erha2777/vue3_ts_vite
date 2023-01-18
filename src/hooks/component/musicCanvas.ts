@@ -1,5 +1,5 @@
-import { ref,onMounted } from 'vue'
-import { randomNum } from '@/utils/utils';
+import { ref, onMounted } from 'vue'
+import { randomNum } from '@/utils/utils'
 export default function () {
     const interval: any = ref(0) // 间隔 = 线的宽度加间隔宽度
     const intervalWidth = ref(2) // 间隔宽度
@@ -163,12 +163,12 @@ export default function () {
     const getImageUrl = (name: string) => {
         return new URL(`../../assets/bg/${name}`, import.meta.url).href
     }
-    const bgList = ref(['3.jpg', '2.png', '1.jpg','4.jpg', '6.png', '7.jpg', '8.png', '9.jpg', '10.jpg'])
+    const bgList = ref(['3.jpg', '2.png', '1.jpg', '10.jpg'])
     const bgIndex = ref(0)
     const bgChange = () => {
         let index = 0
         do {
-            index = randomNum(0, bgList.value.length-1)
+            index = randomNum(0, bgList.value.length - 1)
         } while (bgIndex.value == index)
         bgIndex.value = index
     }
@@ -187,6 +187,6 @@ export default function () {
         getImageUrl,
         bgList,
         bgIndex,
-        bgChange
+        bgChange,
     }
 }
