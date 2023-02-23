@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useStore } from 'vuex';
-import { onMounted,computed } from 'vue';
+import { onMounted,watch } from 'vue';
 import { singerName, indexNumber } from '@/utils/utils';
 import dayjs from 'dayjs'
 import storeFn from '@/hooks/store'
@@ -9,7 +8,8 @@ import clickHighlightFn  from '@/hooks/clickHighlight'
 
 
 const {
-    songData
+    songData,
+    userInfo
 } = storeFn()
 
 const {
@@ -25,12 +25,20 @@ const {
     setActive,
 } = clickHighlightFn()
 
-
+// navigator.mediaDevices.getUserMedia({ audio: true });
 
 onMounted(() => {
-  document.cookie = localStorage.getItem('cookie') + '';
-  getData();
+  // document.cookie = localStorage.getItem('cookie') + '';
+  if(dailySongs.length===0&&userInfo.value.userId){
+    getData();
+  }
 });
+
+watch(userInfo,(newValue,oldValue)=>{
+  if(oldValue.userId===''&&newValue.userId){
+    getData();
+  }
+})
 </script>
 
 <template>

@@ -13,7 +13,10 @@ request.interceptors.request.use(
     function (config) {
         let url: any = config.url
         // axios 缓存请求解决 （get请求）
-        if (config.method === 'get' && url.indexOf('login') === -1 && url.indexOf('song/url') === -1) {
+        if (config.method === 'get' 
+        && url.indexOf('login') === -1 
+        && url.indexOf('song/url') === -1
+        ) {
             url.indexOf('?') === -1 ? (config.url = url + '?_=' + new Date().getTime()) : (config.url = url + '&_=' + new Date().getTime())
         }
         // 在发送请求之前做些什么
