@@ -1,29 +1,8 @@
 import { ref, computed, watch, nextTick } from 'vue'
 import { getImgRGB } from '@/utils/utils'
 import store from '@/store'
-export default function (proxy: any, emit: any) {
-    let fullScreenFlag = ref(false) // 是否全屏
 
-    /**
-     * 全屏
-     */
-    const myFullScreen = () => {
-        fullScreenFlag.value = true
-        var docElm = document.documentElement
-        //W3C
-        if (docElm.requestFullscreen) {
-            docElm.requestFullscreen()
-        }
-    }
-    /**
-     * 退出全屏
-     */
-    const closeMyFullScreen = () => {
-        fullScreenFlag.value = false
-        if (document.exitFullscreen) {
-            document.exitFullscreen()
-        }
-    }
+export default function (proxy: any, emit: any) {
 
     // 专辑图片
     const picUrl = computed(() => store.state.songData.picUrl)
@@ -56,9 +35,6 @@ export default function (proxy: any, emit: any) {
     }
 
     return {
-        fullScreenFlag,
-        myFullScreen,
-        closeMyFullScreen,
         rgbStr,
         close
     }

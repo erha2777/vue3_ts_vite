@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import LoginBox from './components/LoginBox.vue'
 import MyAudio from './components/MyAudio.vue'
 import SongList from './components/SongList.vue'
@@ -10,9 +9,12 @@ import RightClickMenu from './components/RightClickMenu.vue'
 
 import AppFn from '@/hooks/model/app'
 import themeFn from '@/hooks/theme'
-// import music from '@/hooks/music'
 
 import { useStore } from 'vuex'
+
+// import music from '@/hooks/music'
+// import { ipcRenderer } from 'electron' // script标签内，引入ipcRenderer
+const { ipcRenderer } = require('electron') // script标签内，引入ipcRenderer
 
 const store = useStore()
 
@@ -50,17 +52,32 @@ const {
     gdFlag2,
     timerFlag2,
     enterSearch,
-    logoutFn
+    logoutFn,
+    isFullScreen
 } = AppFn()
+
+
 
 // 获取用户登录状态
 // if (window.localStorage.getItem('cookie')) {
-    store.dispatch('getLoginStatus')
+store.dispatch('getLoginStatus')
 // } else {
 //     store.dispatch('getYKCookie')
 // }
 // const { play } = music()
 
+//  methods 中 写下边三个方法，并且绑定到你自己的document 上。
+const minimizeWin = () => {
+    ipcRenderer.send('window-min') // 通知主进程我要进行窗口最小化操作
+}
+
+const maximizeWin = () => {
+    isFullScreen.value = !isFullScreen.value
+    ipcRenderer.send('window-max') // 通知主进程我要进行最大化 或 还原
+}
+const closeWin = () => {
+    ipcRenderer.send('window-close') // 通知主进程我要关闭
+}
 </script>
 
 <template>
@@ -75,26 +92,26 @@ const {
         <div class="logo">网易云音乐</div>
         <div class="header-right">
             <div class="flex">
-                <div class="router">
+                <div class="router nodrag">
                     <span :class="{ not: !history.state.back }" class="iconfont icon-shangyiyehoutuifanhui" @click="routerBack"></span>
                     <span :class="{ not: !history.state.forward }" class="iconfont icon-xiayiyeqianjinchakangengduo" @click="routerNext"></span>
                 </div>
-                <div class="searchBox">
+                <div class="searchBox nodrag">
                     <input @keyup.enter="enterSearch" id="searchInput" type="search" v-model="searchValue" @click="searchFlag = true" />
                 </div>
             </div>
             <div class="flex_ac">
-                <div class="userInfo" v-if="!userInfo.nickname" @click="loginFlag = !loginFlag">
+                <div class="userInfo nodrag" v-if="!userInfo.nickname" @click="loginFlag = !loginFlag">
                     <img class="avatar" src="./assets/avatar.png" alt="" />
                     未登录
                 </div>
                 <div class="userInfo" v-else>
-                    <div class="userInfo-box" @click="userInfoFlag = !userInfoFlag">
+                    <div class="userInfo-box nodrag" @click="userInfoFlag = !userInfoFlag">
                         <img class="avatar" :src="userInfo.avatarUrl" alt="" />
                         {{ userInfo.nickname }}
                         <span class="iconfont icon-xiala"></span>
                     </div>
-                    <div class="userInfo-drop-down" v-show="userInfoFlag">
+                    <div class="userInfo-drop-down nodrag" v-show="userInfoFlag">
                         <div class="drop-down-top">
                             <ul>
                                 <li>
@@ -117,7 +134,7 @@ const {
                         </ul>
                     </div>
                 </div>
-                <div class="theme">
+                <div class="theme nodrag">
                     <span class="iconfont icon-pifuzhuti-xianxing" @click="themeFlag = !themeFlag"></span>
                     <div class="theme-drop-down" v-show="themeFlag">
                         <ul class="model-change">
@@ -138,16 +155,17 @@ const {
                     </div>
                 </div>
                 <div class="setting">
-                    <span class="iconfont icon-shezhi"></span>
+                    <span class="iconfont icon-shezhi nodrag"></span>
                 </div>
                 <div class="messages">
-                    <span class="iconfont icon-youjian"></span>
+                    <span class="iconfont icon-youjian nodrag"></span>
                 </div>
                 <div class="operation">
-                    <span class="iconfont icon-suoxiao1"></span>
-                    <span class="iconfont icon-suoxiao"></span>
-                    <span class="iconfont icon-fangda"></span>
-                    <span class="iconfont icon-guanbi"></span>
+                    <span class="iconfont icon-suoxiao1 nodrag"></span>
+                    <span class="iconfont icon-suoxiao nodrag" @click="minimizeWin"></span>
+                    <span class="iconfont nodrag" :class="{'icon-suoxiao4':isFullScreen,'icon-fangda':!isFullScreen}" @click="maximizeWin"></span>
+                    <!-- <span class="iconfont icon-suoxiao4" @click="maximizeWin"></span> -->
+                    <span class="iconfont icon-guanbi nodrag" @click="closeWin"></span>
                 </div>
             </div>
         </div>

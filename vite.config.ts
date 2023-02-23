@@ -17,6 +17,7 @@ export default ({ mode }) =>
                 ext: '.gz',
             }),
         ],
+        // base: loadEnv(mode, process.cwd()).Vite_BASE,
         base: './',
         resolve: {
             alias: [
@@ -72,5 +73,8 @@ export default ({ mode }) =>
                     drop_debugger: true,
                 },
             },
+        },
+        optimizeDeps: {
+            exclude: ['electron'], // 告诉 Vite 排除预构建 electron，不然会出现 __diranme is not defined
         },
     })

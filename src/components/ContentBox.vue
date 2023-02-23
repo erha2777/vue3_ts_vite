@@ -3,6 +3,7 @@ import { getCurrentInstance } from 'vue'
 import LyricBox from './LyricBox.vue'
 import CommentBox from './CommentBox.vue'
 import contentBoxFn from '@/hooks/component/contentBox'
+import fullScreenFn from '@/hooks/mixin/FullScreen'
 import computedFn from '@/hooks/store'
 
 const { songListFrom, songData, playStop } = computedFn()
@@ -15,7 +16,9 @@ const { proxy } = getCurrentInstance() as any
 
 const emit = defineEmits(['close'])
 
-const { fullScreenFlag, myFullScreen, closeMyFullScreen, rgbStr, close } = contentBoxFn(proxy, emit)
+const { rgbStr, close } = contentBoxFn(proxy, emit)
+
+const {fullScreenFlag, myFullScreen, closeMyFullScreen} = fullScreenFn()
 </script>
 
 <template>

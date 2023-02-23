@@ -52,6 +52,7 @@ export default function (emit:any) {
             getData()
         }
     }
+    
 
     watch(loginType, (newValue, oldValue) => {
         if (newValue === 'qrCode') {

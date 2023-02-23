@@ -7,9 +7,10 @@ import personalFmFn from '@/hooks/model/personalFm'
 
 const { next: fmNext } = personalFmFn() // 引用私人fm的播放下一首
 
-const { songData, playState, songList, volume, progress,playStop } = computedFn()
+const { songData, playState, songList, volume, progress, playStop } = computedFn()
 
 let audio: any = null // audio对象
+
 
 window.onload = () => {
     audio = document.querySelector('#audio audio')
@@ -138,14 +139,11 @@ const volumeMax = () => {
 }
 
 // 控制音量的变化
-watch(
-    volume,
-    (newValue, oldValue) => {
-        nextTick(() => {
-            audio.volume = newValue
-        })
-    }
-)
+watch(volume, (newValue, oldValue) => {
+    nextTick(() => {
+        audio.volume = newValue
+    })
+})
 
 export default function () {
     const router = useRouter()
@@ -219,10 +217,10 @@ export default function () {
      * 加载完成后播放
      */
     const play = () => {
-        console.log(audio);
+        console.log(audio)
         audio.play()
         audio = document.querySelector('#audio audio')
-        console.log(audio);
+        console.log(audio)
         audio.play()
     }
 

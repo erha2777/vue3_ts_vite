@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 import music from '@/hooks/music'
 // import { getCurrentInstance } from 'vue'
@@ -14,7 +14,25 @@ const playBar = computed(() => store.state.playBar)
 // const { proxy } = getCurrentInstance() as any
 
 const { modelStatus, modelChange, previousSong, playChange, nextPlay, playPlan, timeupdate, canplaythrough, nextSong } = music()
-
+const audio = ref<any>(null);
+// const playChange2 = ()=>{
+    
+//     if(playState.value.stop){
+//         audio.value.play()
+//     }else{
+//         audio.value.pause()
+//     }
+//     store.commit('setSongStop', !playState.value.stop)
+// }
+const playChange2 = () => {
+    const audio:any = document.querySelector('#audio audio')
+    if (playState.value.stop) {
+        audio.play()
+    } else {
+        audio.pause()
+    }
+    store.commit('setSongStop', !playState.value.stop)
+}
 </script>
 
 <template>
@@ -30,7 +48,7 @@ const { modelStatus, modelChange, previousSong, playChange, nextPlay, playPlan, 
                 @click="modelChange"
             ></span>
             <span class="iconfont icon-shangyiqu" @click="previousSong"></span>
-            <div class="audio_play" @click="playChange">
+            <div class="audio_play" @click="playChange2()">
                 <span
                     class="iconfont text-color"
                     :class="{

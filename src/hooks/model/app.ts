@@ -20,6 +20,7 @@ export default function () {
     const loginFlag = ref(false) // 用户登录框显示隐藏
     const showContentFlag = ref(false) // 音乐内容层显示隐藏
     const showMusicCanvas = ref(false) // 音乐频谱层显示隐藏
+    const isFullScreen = ref(false) // 是否全屏
 
     // 页面跳转相关
     const history = computed(() => window.history) // 历史记录
@@ -221,5 +222,6 @@ export default function () {
         timerFlag2,
         enterSearch,
         logoutFn,
+        isFullScreen
     }
 }

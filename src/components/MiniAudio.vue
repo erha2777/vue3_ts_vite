@@ -2,9 +2,10 @@
 import { ref } from 'vue'
 import music from '@/hooks/music'
 import computedFn from '@/hooks/store'
+import { useStore } from 'vuex'
+const store = useStore()
 
 const { songData, songList, playState, playBar, playTime, endTime, volume } = computedFn()
-
 
 const props = defineProps({
     right: {
@@ -17,20 +18,19 @@ const props = defineProps({
     },
 })
 
-const {
-    previousSong,
-    playChange,
-    nextSong,
-    playPlan,
-    stopPlay,
-    playMute,
-    volumeMax,
-    playVolume,
-    changeShufflePlay,
-    changeRepeatPlay,
-} = music()
+const { previousSong, playChange, nextSong, playPlan, stopPlay, playMute, volumeMax, playVolume, changeShufflePlay, changeRepeatPlay } = music()
 
 const audioShow = ref(false)
+
+const playChange2 = () => {
+    const audio:any = document.querySelector('#audio audio')
+    if (playState.value.stop) {
+        audio.play()
+    } else {
+        audio.pause()
+    }
+    store.commit('setSongStop', !playState.value.stop)
+}
 </script>
 <template>
     <div class="m-audio" :style="{ right, transform: audioShow ? 'translate(-10px,-50%)' : `translate(${scrollShow ? '248px' : '240px'},-50%)` }">
@@ -56,7 +56,7 @@ const audioShow = ref(false)
             <span class="volume_bar" @click="playVolume">进度条<span class="volume_bar_value" :style="{ width: volume * 100 + '%' }"></span></span>
             <span class="volume_max" @click="volumeMax">最大音量</span>
             <span class="audio_previous" @click="previousSong">上一曲</span>
-            <span class="audio_play" :class="{ playT: !playState.stop }" @click="playChange">播放</span>
+            <span class="audio_play" :class="{ playT: !playState.stop }" @click="playChange2">播放</span>
             <span class="audio_next" @click="nextSong">下一曲</span>
             <span class="audio_stop" @click="stopPlay">停止</span>
             <span class="audio_repeat" :class="{ repeat_click: playState.repeat }" @click="changeRepeatPlay">循环</span>
