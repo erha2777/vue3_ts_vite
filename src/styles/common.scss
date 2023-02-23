@@ -2,6 +2,9 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+#app{
+  min-width: 870px;
+}
 a{
     color: inherit;
     text-decoration: none;

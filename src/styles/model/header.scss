@@ -27,6 +27,7 @@
         text-align: center;
         color: white;
         font-size: 24px;
+        cursor: pointer;
     }
     .router{
         margin-right: 10px;
@@ -177,6 +178,6 @@
     .operation{
         border-left: 1px solid #fff;
         margin-left: 10px;
-        padding: 0 5px;
+        padding: 0 10px 0 5px;
     }
 }

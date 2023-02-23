@@ -31,7 +31,7 @@ const { minimizeWin, maximizeWin, closeWin, isFullScreen } = electronFn()
     >
         <header>
             <div class="logo" v-if="!fullScreenFlag">
-                <span class="iconfont icon-xiangxiajiantou" @click="close"></span>
+                <span class="iconfont icon-xiangxiajiantou nodrag" @click="close"></span>
             </div>
             <div class="header-right" v-if="!fullScreenFlag">
                 <div class="flex">

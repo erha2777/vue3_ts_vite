@@ -75,7 +75,7 @@ store.dispatch('getLoginStatus')
             }
         "
     >
-        <div class="logo">网易云音乐</div>
+        <div class="logo nodrag">WYY音乐</div>
         <div class="header-right">
             <div class="flex">
                 <div class="router nodrag">

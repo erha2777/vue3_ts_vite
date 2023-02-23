@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted,watch } from 'vue';
-import { singerName, indexNumber } from '@/utils/utils';
+import { singerName, indexNumber,SongTime } from '@/utils/utils';
 import dayjs from 'dayjs'
 import storeFn from '@/hooks/store'
 import homeFn from '@/hooks/model/home'
@@ -86,7 +86,7 @@ watch(userInfo,(newValue,oldValue)=>{
       <span class="name" :class="{'theme-text-color':item.id===songData.id}">{{ item['name'] }}</span>
       <span>{{ singerName(item['ar']) }}</span>
       <span>{{ item['al'].name }}</span>
-      <span>时长</span>
+      <span>{{SongTime(item['dt'])}}</span>
     </li>
   </ul>
 </div>
