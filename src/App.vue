@@ -14,7 +14,7 @@ import { useStore } from 'vuex'
 
 // import music from '@/hooks/music'
 // import { ipcRenderer } from 'electron' // script标签内，引入ipcRenderer
-const { ipcRenderer } = require('electron') // script标签内，引入ipcRenderer
+// const { ipcRenderer } = require('electron') // script标签内，引入ipcRenderer
 
 const store = useStore()
 
@@ -68,15 +68,15 @@ store.dispatch('getLoginStatus')
 
 //  methods 中 写下边三个方法，并且绑定到你自己的document 上。
 const minimizeWin = () => {
-    ipcRenderer.send('window-min') // 通知主进程我要进行窗口最小化操作
+    // ipcRenderer.send('window-min') // 通知主进程我要进行窗口最小化操作
 }
 
 const maximizeWin = () => {
     isFullScreen.value = !isFullScreen.value
-    ipcRenderer.send('window-max') // 通知主进程我要进行最大化 或 还原
+    // ipcRenderer.send('window-max') // 通知主进程我要进行最大化 或 还原
 }
 const closeWin = () => {
-    ipcRenderer.send('window-close') // 通知主进程我要关闭
+    // ipcRenderer.send('window-close') // 通知主进程我要关闭
 }
 </script>
 
