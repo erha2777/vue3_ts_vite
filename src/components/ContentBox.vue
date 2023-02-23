@@ -3,8 +3,9 @@ import { getCurrentInstance } from 'vue'
 import LyricBox from './LyricBox.vue'
 import CommentBox from './CommentBox.vue'
 import contentBoxFn from '@/hooks/component/contentBox'
-import fullScreenFn from '@/hooks/mixin/FullScreen'
 import computedFn from '@/hooks/store'
+import fullScreenFn from '@/hooks/fullScreen'
+import electronFn from '@/hooks/electron'
 
 const { songListFrom, songData, playStop } = computedFn()
 
@@ -19,6 +20,7 @@ const emit = defineEmits(['close'])
 const { rgbStr, close } = contentBoxFn(proxy, emit)
 
 const {fullScreenFlag, myFullScreen, closeMyFullScreen} = fullScreenFn()
+const { minimizeWin, maximizeWin, closeWin, isFullScreen } = electronFn()
 </script>
 
 <template>
@@ -53,11 +55,11 @@ const {fullScreenFlag, myFullScreen, closeMyFullScreen} = fullScreenFn()
                         <span class="iconfont icon-youjian"></span>
                     </div>
                     <div class="operation">
-                        <span class="iconfont icon-suoxiao1"></span>
-                        <span class="iconfont icon-suoxiao"></span>
-                        <span class="iconfont icon-fangda"></span>
-                        <span class="iconfont icon-guanbi"></span>
-                    </div>
+                        <span class="iconfont icon-suoxiao1 nodrag"></span>
+                        <span class="iconfont icon-suoxiao nodrag" @click="minimizeWin"></span>
+                        <span class="iconfont nodrag" :class="{ 'icon-suoxiao4': isFullScreen, 'icon-fangda': !isFullScreen }" @click="maximizeWin"></span>
+                        <span class="iconfont icon-guanbi nodrag" @click="closeWin"></span>
+                        </div>
                 </div>
             </div>
             <div class="closeMyFullScreen" v-if="fullScreenFlag">

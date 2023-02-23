@@ -69,8 +69,8 @@ const close = () => {
     top: calc(100vh);
     left: 0;
     width: 100%;
-    height: calc(100vh);
     transition: top 0.5s;
+    height: calc(100vh);
     background-color: rgba(000, 000, 000, 1);
     // background: url('../assets/bg/3.jpg') no-repeat;
     background-size: cover;

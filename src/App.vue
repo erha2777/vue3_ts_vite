@@ -9,12 +9,12 @@ import RightClickMenu from './components/RightClickMenu.vue'
 
 import AppFn from '@/hooks/model/app'
 import themeFn from '@/hooks/theme'
+import electronFn from '@/hooks/electron'
 
 import { useStore } from 'vuex'
 
 // import music from '@/hooks/music'
-// import { ipcRenderer } from 'electron' // script标签内，引入ipcRenderer
-// const { ipcRenderer } = require('electron') // script标签内，引入ipcRenderer
+
 
 const store = useStore()
 
@@ -53,10 +53,9 @@ const {
     timerFlag2,
     enterSearch,
     logoutFn,
-    isFullScreen
 } = AppFn()
 
-
+const { minimizeWin, maximizeWin, closeWin, isFullScreen } = electronFn()
 
 // 获取用户登录状态
 // if (window.localStorage.getItem('cookie')) {
@@ -65,19 +64,6 @@ store.dispatch('getLoginStatus')
 //     store.dispatch('getYKCookie')
 // }
 // const { play } = music()
-
-//  methods 中 写下边三个方法，并且绑定到你自己的document 上。
-const minimizeWin = () => {
-    // ipcRenderer.send('window-min') // 通知主进程我要进行窗口最小化操作
-}
-
-const maximizeWin = () => {
-    isFullScreen.value = !isFullScreen.value
-    // ipcRenderer.send('window-max') // 通知主进程我要进行最大化 或 还原
-}
-const closeWin = () => {
-    // ipcRenderer.send('window-close') // 通知主进程我要关闭
-}
 </script>
 
 <template>
@@ -163,8 +149,7 @@ const closeWin = () => {
                 <div class="operation">
                     <span class="iconfont icon-suoxiao1 nodrag"></span>
                     <span class="iconfont icon-suoxiao nodrag" @click="minimizeWin"></span>
-                    <span class="iconfont nodrag" :class="{'icon-suoxiao4':isFullScreen,'icon-fangda':!isFullScreen}" @click="maximizeWin"></span>
-                    <!-- <span class="iconfont icon-suoxiao4" @click="maximizeWin"></span> -->
+                    <span class="iconfont nodrag" :class="{ 'icon-suoxiao4': isFullScreen, 'icon-fangda': !isFullScreen }" @click="maximizeWin"></span>
                     <span class="iconfont icon-guanbi nodrag" @click="closeWin"></span>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { ref, computed, watch, nextTick } from 'vue'
+import { ref } from 'vue'
 
 let fullScreenFlag = ref(false) // 是否全屏
 
