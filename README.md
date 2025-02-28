@@ -19,11 +19,11 @@ npm run dev
 
 # 一些截图
 
-<img src='https://pic1.imgdb.cn/item/63c7ee8fbe43e0d30ebe1bc4.png' />
+<img src='https://github.com/erha2777/public/blob/main/images/c26aa555832feb652873e50df8b846cd68c563b2.png' />
 
-<img src='https://pic1.imgdb.cn/item/63c7ee8fbe43e0d30ebe1bcf.png' />
+<img src='https://github.com/erha2777/public/blob/main/images/4c9ab65ca08e5cb9e0cf6aa430282d58f1e4b400.png' />
 
-<img src='https://pic1.imgdb.cn/item/63c7ee8fbe43e0d30ebe1be5.png' />
+<img src='https://github.com/erha2777/public/blob/main/images/c8bd958cd6b3bb46f93f9804821943ae86fe0bc4.png' />
 
 
 
